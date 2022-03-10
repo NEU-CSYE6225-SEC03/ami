@@ -47,6 +47,11 @@
             "destination": "/home/ec2-user/"
         },
         {
+            "type": "file",
+            "source": "./sql.sh",
+            "destination": "/home/ec2-user/"
+        },
+        {
             "type": "shell",
             "script": "./install_env.sh"
         }
