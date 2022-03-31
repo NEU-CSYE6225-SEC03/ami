@@ -2,6 +2,20 @@ echo "Start to install dependencies, current time is:"  `date`
 sudo yum -y update
 cd /home/ec2-user/
 
+# CodeDeploy
+sudo yum -y update
+sudo yum install -y ruby
+sudo yum install -y wget
+CODEDEPLOY_BIN="/opt/codedeploy-agent/bin/codedeploy-agent"
+$CODEDEPLOY_BIN stop
+yum erase codedeploy-agent -y
+cd /home/ec2-user
+wget https://aws-codedeploy-us-east-1.s3.us-east-1.amazonaws.com/latest/install
+chmod +x ./install
+sudo ./install auto
+sudo service codedeploy-agent start
+sudo service codedeploy-agent status
+
 # Python dependencies
 sudo yum install -y python3
 sudo yum install -y python3-pip
