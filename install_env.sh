@@ -20,6 +20,7 @@ sudo service codedeploy-agent status
 # CloudWatch
 sudo yum install -y amazon-cloudwatch-agent
 sudo systemctl enable amazon-cloudwatch-agent.service
+sudo systemctl start amazon-cloudwatch-agent.service
 
 # Python dependencies
 sudo yum install -y python3
