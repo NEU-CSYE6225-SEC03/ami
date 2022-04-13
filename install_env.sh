@@ -17,11 +17,6 @@ sudo service codedeploy-agent status
 sudo service codedeploy-agent start
 sudo service codedeploy-agent status
 
-# CloudWatch
-sudo yum install -y amazon-cloudwatch-agent
-sudo systemctl enable amazon-cloudwatch-agent.service
-sudo systemctl start amazon-cloudwatch-agent.service
-
 # Python dependencies
 sudo yum install -y python3
 sudo yum install -y python3-pip
@@ -35,3 +30,10 @@ cd /home/ec2-user/
 sudo yum install -y mariadb-server
 sudo systemctl enable mariadb.service
 sudo systemctl start mariadb.service
+
+# CloudWatch
+sudo yum install -y amazon-cloudwatch-agent
+sudo systemctl enable amazon-cloudwatch-agent.service
+sudo /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl -a fetch-config -m ec2 -c file:/home/ec2-user/webservice/cloudwatch-config.json -s
+sudo systemctl start amazon-cloudwatch-agent.service
+
