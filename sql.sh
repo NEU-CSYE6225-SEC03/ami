@@ -7,7 +7,8 @@ CREATE TABLE IF NOT EXISTS user (
   username char(50) NOT NULL unique,
   password char(100) NOT NULL,
   account_created timestamp NOT NULL,
-  account_updated timestamp NOT NULL
+  account_updated timestamp NOT NULL,
+  verified boolean NOT NULL DEFAULT false
 ) default charset=utf8;
 CREATE TABLE IF NOT EXISTS image (
   id char(50) NOT NULL, Constraint pk_image_id PRIMARY KEY (id),  # 待优化, 不应该拿非线性数据如字符串做索引
